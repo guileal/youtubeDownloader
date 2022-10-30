@@ -15,7 +15,8 @@
     --primary-white: #FFFFFF;
     --secondary-purple: #4B50DF;
     --background-color: #1a1d28;
-
+    --black-light: #272E3F;
+    --gradient: linear-gradient(0deg, rgba(75, 80, 223, 1) 10%, rgba(60, 165, 236, 1) 100%);
     /* font-family: ; */
 }
 
@@ -31,13 +32,22 @@ main {
     max-width: 100%;
     background-color: var(--background-color);
 
+    border-radius: 0;
+
+    transition: all 300ms ease;
+}
+
+main.search {
+    border-radius: 0 0 64px 64px;
+    transition: all 300ms ease;
+
 }
 
 h1 {
+    font-size: 3rem;
     font-family: var(--font);
     font-weight: 700;
     color: var(--primary-blue);
-    margin-bottom: 1.4rem;
 }
 
 h1 mark {
@@ -49,25 +59,27 @@ h1 mark {
 form {
     display: flex;
     flex-direction: column;
+    width: 100%;
     max-width: 600px;
-    height: 60px;
-    margin: 8px 8px;
-    padding: 16px 16px;
-
-    border-radius: 16px;
-
-    background: #272E3F;
     color: var(--primary-white);
 }
 
-form label {
+form label.input {
     position: relative;
+    display: flex;
+    justify-content: center;
+    height: 60px;
     font-size: 20px;
     text-align: center;
-    width: 100%;
+
     color: var(--primary-white);
+    background: #272E3F;
+
     opacity: .5;
-    margin-top: -.1rem
+    margin: 16px 0px;
+    padding: 16px 16px;
+    border-radius: 16px;
+    overflow: hidden
 }
 
 form input[type=text]#input {
@@ -76,6 +88,7 @@ form input[type=text]#input {
     left: 0;
 
     width: 100%;
+    height: 100%;
     font-size: 20px;
     text-align: center;
     background: transparent;
@@ -98,5 +111,49 @@ form input[type=text]#input:focus {
 
 form input[type=text]#input:not(:placeholder-shown) {
     color: var(--primary-white);
+    opacity: 1;
+}
+
+label:has(input#submit) * {
+    cursor: pointer;
+}
+
+label:has(input#submit) {
+    display: flex;
+    justify-content: center;
+
+    height: 50px;
+    width: 100%;
+    max-width: 230px;
+    padding: 0 16px;
+    margin: 0 auto;
+    border-radius: 16px;
+
+    color: var(--primary-white);
+    background: rgb(75, 80, 223);
+    background: var(--gradient);
+    transition: box-shadow 500ms ease;
+    box-shadow: #393ec6dd 0px 1px 0px;
+
+    cursor: pointer;
+}
+
+label:has(input#submit):hover {
+    transition: box-shadow 800ms ease;
+    box-shadow: #393ec6dd 0px 0px 16px;
+
+}
+
+input#submit {
+    color: var(--primary-white);
+    font-size: 18px;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+form label#input:not(:placeholder-shown) {
+    background-color: red;
     opacity: 1;
 }
